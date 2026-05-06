@@ -9,7 +9,7 @@ exports.registerController = async (req,res)=>{
 
         console.log('body : : : ',req.body);
         
-        const { name , email , password } = req.body;
+        const { name , email , password, role } = req.body;
 
 
         if(!name || !email || !password){
@@ -33,7 +33,8 @@ exports.registerController = async (req,res)=>{
         const newUser = await userModel.create({
             name:name,
             email:email,
-            password:hashPassword
+            password:hashPassword,
+            role:role
         });
 
         res.json({
